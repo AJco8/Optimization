@@ -8,7 +8,9 @@ The temperature of the water and air were assumed to be uniform at 90Â°C and 20Â
 </p>
 
 In order to use the optimize the shape numerically, the shape must be represented numerically. The shape can be modeled as the function of the height (h) at a given point along the length (x). The height function is given below for the length of the cross section (L).
+
 $$h\left(x\right)=a_1+\sum_{k=2}^{n}{a_ksin{\left(\frac{2\pi\left(k-1\right)}{L}x\right)}}$$
+
 The design variables being optimized are given as a vector (a) with a length of n. 
 
 ## Results
@@ -22,4 +24,5 @@ The design variables being optimized are given as a vector (a) with a length of 
 
 <p align="center">
 <img src="./Height.png" alt="Optimized Shape" style="">
+
 </p>
