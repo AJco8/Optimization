@@ -17,6 +17,7 @@ The program would utilize the complex step method to approximate partial derivat
 
 ## Implementation
 The initial radii of the nodes of the spar are listed in a column array in pairs of inner and outer radii, respectively. The number of pairs in the array would need to be equal to the number of nodes, which can be found by adding one to the number of elements. The resulting array is twice the number of nodes; an example is shown below.
+
 Equation 4
 $$r = \begin{bmatrix}
 r_{inner,1}\\
@@ -25,9 +26,12 @@ r_{inner,2}\\
 r_{outer,2}\\
 \vdots\\
 \end{bmatrix}$$
+
 The weight of the spar was determined using the radius design variables array with the <a href="./Objective.m">Objective function</a>. The radii that would result in the least weight was found using MATLAB’s fmincon function, which would be limited by an A and b inequality matrix, upper and lower bound arrays, as well as non-linear constraints. The A and b inequality matrices are used by fmincon by the following equation:
+
 Equation 5
 $Ax\leq b$
+
 Equation 6
 $$A=\begin{bmatrix}
 1 & -1 & 0 & 0 & 0 & 0 & \cdots \\
@@ -35,6 +39,7 @@ $$A=\begin{bmatrix}
 0 & 0 & 0 & 0 & 1 & -1 & \cdots\\
 \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \ddots
 \end{bmatrix}$$
+
 The A inequality matrix shown above (Equation 6) corresponds to a positive identity matrix for the inner radius values and a negative identity matrix for the outer radius. The matrix has an equal number of rows and columns as the nodes and variables, respectively. This results in a constraint that ensures that the difference between the inner and outer radius remains greater than the minimum thickness in the b inequality array (Equation 5). The function was also constrained by stress in the nonlin function (nonlin.m), which prevented the design variables from resulting in a stress greater than the ultimate tensile or compressive strength. 
 The fmincon function would find the design variables that produce the smallest mass found by the objective function (ObjectiveCS.m). The gradient of this function was found by the program using the complex step method. The stress on the spar is found using the provided functions, CalcBeamDisplacement.m to find the vertical displacement (Figure 5) that was used with CalcBeamStress.m to find stress (Figure 6). The Jacobian matrix of this constraint was calculated using the complex step method before being implemented into fmincon.
 In order to find the best number of elements to use when optimizing, the stress at the tip of the spar was calculated for various numbers of elements. The stress at the tip is known to be zero; any deviation from that is an error that can be measured. The resulting plot is shown in the mesh convergence study (Figure 7) from which a value was chosen that had a small % change without overloading the computation.
@@ -72,3 +77,4 @@ The final mass found by the program was roughly 4.9 kg, this is 92% less than th
 
 
 Both displacement and stress increased in the optimized spar compared to the initial geometry. The plot of stress (Figure 6) shows the optimized spar does not exceed the ultimate strength of the material but does hold near the limit. This is expected because the lighter spar produces more displacement and therefore greater stress. 
+
