@@ -7,26 +7,33 @@ The inner radius must be smaller than 1cm, the outer radius cannot be larger tha
 Given the nominal values for force, the strain outputs the following plot. 
 
 Figure 2: Stress on Nominal Spar
+
 <img src="./Plots/Nominal.png">
 
 Figure 3: Mesh Convergence Plot
+
 <img src="./Plots/Mesh.png">
 
 The mesh convergence study tested the error found through the stress with the number of elements increasing from an initial value of 4 to 200. The number of elements used for the optimization was found by finding where the percent change from the previous point was below 10%, which resulted in 62 elements.
  
 Figure 4: Plot of feasibility
+
 <img src="./Plots/Feasibility.png">
-Figure 4 shows the feasibility of each iteration of the fmincon function.
   
 Figure 5: Cross-section of top half of spar
+
 <img src="./Plots/Cross Section.png">
 
 The above figure shows the cross-section of the top half of the spar along the length of the wing. A 3-dimentional model of the optimized geometry of the spar is shown below.
   
 Figure 6: Model of Optimized Spar Geometry
+
 <img src="./Plots/Geometry.png">
 
 Figure 7: Plot of stress on spar
+
 <img src="./Plots/Stress.png">
+
 The resulting stress plot (Figure 7) show the mean stress with six standard deviations is consistent with the optimized stress from project 2. This is expected because the lighter spar would result in greater stress, limited to the ultimate stress of 600 MPa. This causes the stress to remain near or at the upper limit.
+
 
