@@ -20,7 +20,3 @@ Figure 6: Plot of Surrogate Function
 Figure 7: Feasibility
 
 <img src="./Figures/Feasibility.png">
-
-## Conclusion 
-
-The optimized values for the design variables were found to be 7.7265 radians per second, 1.325 radians, and 0.2627 meters respectively. These optimized values result in a standard deviation of 2.642, which is 185.7% greater than the standard deviation found using the nominal values of 1.567.
